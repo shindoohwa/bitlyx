@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Converter & Hash Generator - DevToolBox</title>
+    <meta name="description"
+        content="Generate MD5, SHA-256, SHA-512 hashes. Encrypt and decrypt data using AES. Base64, Hex, and URL decoding tools online.">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="/">DevToolBox</a></div>
+            <nav>
+                <a href="/json-parser.html" class="nav-link">JSON Parser</a>
+                <a href="/crypto-converter.html" class="nav-link active">Crypto Converter</a>
+                <a href="/base-converter.html" class="nav-link">Base Converter</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="crypto" class="page-content">
+                <div class="tool-header">
+                    <h1>Crypto Converter</h1>
+                </div>
+
+                <div class="crypto-split">
+                    <!-- Encrypt & Hash Column -->
+                    <div class="crypto-col">
+                        <h3>Encrypt & Hash</h3>
+                        <div class="input-group">
+                            <label>Plain Text to Encrypt/Hash</label>
+                            <textarea id="crypto-input-encrypt" placeholder="Enter plain text..."></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Secret Key (for AES)</label>
+                            <input type="text" id="crypto-key-encrypt" placeholder="Enter secret key..." />
+                        </div>
+                        <div class="crypto-results-grid">
+                            <div class="input-group">
+                                <label>AES Encrypt</label>
+                                <div class="copy-wrapper">
+                                    <input type="text" id="crypto-aes-enc" readonly />
+                                    <button class="copy-btn" data-target="crypto-aes-enc">Copy</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>MD5</label>
+                                <div class="copy-wrapper">
+                                    <input type="text" id="crypto-md5" readonly />
+                                    <button class="copy-btn" data-target="crypto-md5">Copy</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>SHA-256</label>
+                                <div class="copy-wrapper">
+                                    <input type="text" id="crypto-sha256" readonly />
+                                    <button class="copy-btn" data-target="crypto-sha256">Copy</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>SHA-512</label>
+                                <div class="copy-wrapper">
+                                    <input type="text" id="crypto-sha512" readonly />
+                                    <button class="copy-btn" data-target="crypto-sha512">Copy</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>SHA-1</label>
+                                <div class="copy-wrapper">
+                                    <input type="text" id="crypto-sha1" readonly />
+                                    <button class="copy-btn" data-target="crypto-sha1">Copy</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Base64 Encode</label>
+                                <div class="copy-wrapper">
+                                    <input type="text" id="crypto-b64-enc" readonly />
+                                    <button class="copy-btn" data-target="crypto-b64-enc">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Decrypt & Decode Column -->
+                    <div class="crypto-col">
+                        <h3>Decrypt & Decode</h3>
+                        <div class="input-group">
+                            <label>Data to Decrypt/Decode</label>
+                            <textarea id="crypto-input-decrypt"
+                                placeholder="Enter encoded or encrypted text..."></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Algorithm</label>
+                            <select id="crypto-select-decrypt" class="custom-select">
+                                <option value="base64">Base64 Decode</option>
+                                <option value="hex">Hex (16진수) Decode</option>
+                                <option value="url">URL Decode</option>
+                                <option value="aes">AES Decrypt</option>
+                            </select>
+                        </div>
+                        <div id="crypto-key-decrypt-wrapper" class="input-group" style="display: none;">
+                            <label>Secret Key (for AES)</label>
+                            <input type="text" id="crypto-key-decrypt" placeholder="Enter secret key..." />
+                        </div>
+                        <div class="input-group">
+                            <label>Result</label>
+                            <div class="copy-wrapper">
+                                <textarea id="crypto-output-decrypt" readonly style="min-height: 100px;"></textarea>
+                                <button class="copy-btn" data-target="crypto-output-decrypt">Copy</button>
+                            </div>
+                        </div>
+                        <div id="crypto-decrypt-error" class="error-msg"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 DevToolBox | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

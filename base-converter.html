@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base Converter (Binary, Hex, Decimal) - DevToolBox</title>
+    <meta name="description"
+        content="Convert numbers between Binary, Octal, Decimal, and Hexadecimal. Free online base conversion tool for developers.">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="/">DevToolBox</a></div>
+            <nav>
+                <a href="/json-parser.html" class="nav-link">JSON Parser</a>
+                <a href="/crypto-converter.html" class="nav-link">Crypto Converter</a>
+                <a href="/base-converter.html" class="nav-link active">Base Converter</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="converter" class="page-content">
+                <div class="tool-header">
+                    <h1>Base Converter</h1>
+                </div>
+                <div class="converter-grid">
+                    <div class="input-group">
+                        <label>Decimal (10)</label>
+                        <input type="text" id="base-10" placeholder="123" />
+                    </div>
+                    <div class="input-group">
+                        <label>Hexadecimal (16)</label>
+                        <input type="text" id="base-16" placeholder="7b" />
+                    </div>
+                    <div class="input-group">
+                        <label>Binary (2)</label>
+                        <input type="text" id="base-2" placeholder="1111011" />
+                    </div>
+                    <div class="input-group">
+                        <label>Octal (8)</label>
+                        <input type="text" id="base-8" placeholder="173" />
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 DevToolBox | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

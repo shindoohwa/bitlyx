@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevToolBox - Simple & Powerful</title>
+    <title>DevToolBox - Essential Online Developer Tools</title>
+    <meta name="description"
+        content="Free online developer tools including JSON Parser, Crypto Converter (AES, MD5, SHA), and Base Converter. Simple, fast, and SEO friendly.">
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,121 +17,35 @@
 <body>
     <div id="app">
         <header>
-            <div class="logo">DevToolBox</div>
+            <div class="logo"><a href="/">DevToolBox</a></div>
             <nav>
-                <button class="nav-btn active" data-tab="json">JSON Parser</button>
-                <button class="nav-btn" data-tab="crypto">Crypto Converter</button>
-                <button class="nav-btn" data-tab="converter">Base Converter</button>
+                <a href="/json-parser.html" class="nav-link">JSON Parser</a>
+                <a href="/crypto-converter.html" class="nav-link">Crypto Converter</a>
+                <a href="/base-converter.html" class="nav-link">Base Converter</a>
             </nav>
         </header>
 
-        <main>
-            <!-- JSON Parser Section -->
-            <section id="json" class="tab-content active">
-                <div class="tool-header">
-                    <h2>JSON Parser & Tree Viewer</h2>
-                    <div class="actions">
-                        <button id="json-format">Format</button>
-                        <button id="json-minify">Minify</button>
-                        <button id="json-clear">Clear</button>
-                    </div>
-                </div>
-                <div class="search-container" id="json-search-wrapper">
-                    <input type="text" id="json-search" placeholder="Search keys or values in tree..." />
-                    <span id="search-count" class="search-count">0 matches</span>
-                </div>
-                <div class="split-container">
-                    <div class="editor-side">
-                        <label>JSON Editor</label>
-                        <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
-                    </div>
-                    <div class="tree-side">
-                        <label>Tree View</label>
-                        <div id="json-tree-container" class="tree-container"></div>
-                    </div>
-                </div>
-                <div id="json-error" class="error-msg"></div>
-            </section>
+        <main class="landing-hero">
+            <section class="hero-section">
+                <h1>All-in-One Developer Toolbox</h1>
+                <p>Simple, powerful, and privacy-focused tools for modern developers.</p>
 
-            <!-- Crypto Section -->
-            <section id="crypto" class="tab-content">
-                <div class="tool-header">
-                    <h2>Crypto Converter</h2>
-                </div>
-                <div class="input-group">
-                    <label for="crypto-input">Plain Text</label>
-                    <textarea id="crypto-input" placeholder="Enter text to translate..."
-                        style="min-height: 100px;"></textarea>
-                </div>
-
-                <div class="crypto-grid">
-                    <div class="input-group">
-                        <label>MD5</label>
-                        <div class="copy-wrapper">
-                            <input type="text" id="crypto-md5" readonly />
-                            <button class="copy-btn" data-target="crypto-md5">Copy</button>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label>SHA-256</label>
-                        <div class="copy-wrapper">
-                            <input type="text" id="crypto-sha256" readonly />
-                            <button class="copy-btn" data-target="crypto-sha256">Copy</button>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label>SHA-512</label>
-                        <div class="copy-wrapper">
-                            <input type="text" id="crypto-sha512" readonly />
-                            <button class="copy-btn" data-target="crypto-sha512">Copy</button>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label>SHA-1</label>
-                        <div class="copy-wrapper">
-                            <input type="text" id="crypto-sha1" readonly />
-                            <button class="copy-btn" data-target="crypto-sha1">Copy</button>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label>Base64 Encode</label>
-                        <div class="copy-wrapper">
-                            <input type="text" id="crypto-b64-enc" readonly />
-                            <button class="copy-btn" data-target="crypto-b64-enc">Copy</button>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label>Base64 Decode</label>
-                        <div class="copy-wrapper">
-                            <input type="text" id="crypto-b64-dec" readonly />
-                            <button class="copy-btn" data-target="crypto-b64-dec">Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Base Converter Section -->
-            <section id="converter" class="tab-content">
-                <div class="tool-header">
-                    <h2>Base Converter</h2>
-                </div>
-                <div class="converter-grid">
-                    <div class="input-group">
-                        <label>Decimal (10)</label>
-                        <input type="text" id="base-10" placeholder="123" />
-                    </div>
-                    <div class="input-group">
-                        <label>Hexadecimal (16)</label>
-                        <input type="text" id="base-16" placeholder="7b" />
-                    </div>
-                    <div class="input-group">
-                        <label>Binary (2)</label>
-                        <input type="text" id="base-2" placeholder="1111011" />
-                    </div>
-                    <div class="input-group">
-                        <label>Octal (8)</label>
-                        <input type="text" id="base-8" placeholder="173" />
-                    </div>
+                <div class="tool-grid">
+                    <a href="/json-parser.html" class="tool-card">
+                        <div class="tool-icon">{}</div>
+                        <h3>JSON Parser</h3>
+                        <p>Format, minify, and search through JSON tree structures in real-time.</p>
+                    </a>
+                    <a href="/crypto-converter.html" class="tool-card">
+                        <div class="tool-icon">🔒</div>
+                        <h3>Crypto Converter</h3>
+                        <p>AES encrypt/decrypt, MD5, SHA hashes, and various text decoders.</p>
+                    </a>
+                    <a href="/base-converter.html" class="tool-card">
+                        <div class="tool-icon">10</div>
+                        <h3>Base Converter</h3>
+                        <p>Instant conversion between Binary, Octal, Decimal, and Hexadecimal.</p>
+                    </a>
                 </div>
             </section>
         </main>
@@ -138,7 +54,6 @@
             <p>&copy; 2026 DevToolBox | Simple Development Tools</p>
         </footer>
     </div>
-    <script type="module" src="/main.js"></script>
 </body>
 
 </html>

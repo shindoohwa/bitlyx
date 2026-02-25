@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Parser & Tree Viewer - DevToolBox</title>
+    <meta name="description"
+        content="View, format, and search through JSON data with our free online JSON Tree Viewer. Edit and minify JSON in real-time.">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="/">DevToolBox</a></div>
+            <nav>
+                <a href="/json-parser.html" class="nav-link active">JSON Parser</a>
+                <a href="/crypto-converter.html" class="nav-link">Crypto Converter</a>
+                <a href="/base-converter.html" class="nav-link">Base Converter</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="json" class="page-content">
+                <div class="tool-header">
+                    <h1>JSON Parser & Tree Viewer</h1>
+                    <div class="actions">
+                        <button id="json-format">Format</button>
+                        <button id="json-minify">Minify</button>
+                        <button id="json-clear">Clear</button>
+                    </div>
+                </div>
+                <div class="search-container" id="json-search-wrapper">
+                    <input type="text" id="json-search" placeholder="Search keys or values in tree..." />
+                    <span id="search-count" class="search-count">0 matches</span>
+                </div>
+                <div class="split-container">
+                    <div class="editor-side">
+                        <label>JSON Editor</label>
+                        <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                    </div>
+                    <div class="tree-side">
+                        <label>Tree View</label>
+                        <div id="json-tree-container" class="tree-container"></div>
+                    </div>
+                </div>
+                <div id="json-error" class="error-msg"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 DevToolBox | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
