@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,15 +8,17 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <header>
             <div class="logo">DevToolBox</div>
             <nav>
                 <button class="nav-btn active" data-tab="json">JSON Parser</button>
-                <button class="nav-btn" data-tab="crypto">Crypto (MD5)</button>
+                <button class="nav-btn" data-tab="crypto">Crypto Converter</button>
                 <button class="nav-btn" data-tab="converter">Base Converter</button>
             </nav>
         </header>
@@ -24,17 +27,28 @@
             <!-- JSON Parser Section -->
             <section id="json" class="tab-content active">
                 <div class="tool-header">
-                    <h2>JSON Parser</h2>
+                    <h2>JSON Parser & Tree Viewer</h2>
                     <div class="actions">
                         <button id="json-format">Format</button>
                         <button id="json-minify">Minify</button>
                         <button id="json-clear">Clear</button>
                     </div>
                 </div>
-                <div class="editor-container">
-                    <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
-                    <div id="json-error" class="error-msg"></div>
+                <div class="search-container" id="json-search-wrapper">
+                    <input type="text" id="json-search" placeholder="Search keys or values in tree..." />
+                    <span id="search-count" class="search-count">0 matches</span>
                 </div>
+                <div class="split-container">
+                    <div class="editor-side">
+                        <label>JSON Editor</label>
+                        <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                    </div>
+                    <div class="tree-side">
+                        <label>Tree View</label>
+                        <div id="json-tree-container" class="tree-container"></div>
+                    </div>
+                </div>
+                <div id="json-error" class="error-msg"></div>
             </section>
 
             <!-- Crypto Section -->
@@ -44,13 +58,52 @@
                 </div>
                 <div class="input-group">
                     <label for="crypto-input">Plain Text</label>
-                    <textarea id="crypto-input" placeholder="Enter text to hash..."></textarea>
+                    <textarea id="crypto-input" placeholder="Enter text to translate..."
+                        style="min-height: 100px;"></textarea>
                 </div>
-                <div class="input-group">
-                    <label for="crypto-output">MD5 Hash</label>
-                    <div class="copy-wrapper">
-                        <input type="text" id="crypto-output" readonly />
-                        <button class="copy-btn" data-target="crypto-output">Copy</button>
+
+                <div class="crypto-grid">
+                    <div class="input-group">
+                        <label>MD5</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="crypto-md5" readonly />
+                            <button class="copy-btn" data-target="crypto-md5">Copy</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>SHA-256</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="crypto-sha256" readonly />
+                            <button class="copy-btn" data-target="crypto-sha256">Copy</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>SHA-512</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="crypto-sha512" readonly />
+                            <button class="copy-btn" data-target="crypto-sha512">Copy</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>SHA-1</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="crypto-sha1" readonly />
+                            <button class="copy-btn" data-target="crypto-sha1">Copy</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Base64 Encode</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="crypto-b64-enc" readonly />
+                            <button class="copy-btn" data-target="crypto-b64-enc">Copy</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Base64 Decode</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="crypto-b64-dec" readonly />
+                            <button class="copy-btn" data-target="crypto-b64-dec">Copy</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -87,4 +140,5 @@
     </div>
     <script type="module" src="/main.js"></script>
 </body>
+
 </html>
