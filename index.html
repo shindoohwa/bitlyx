@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevToolBox - Simple & Powerful</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">DevToolBox</div>
+            <nav>
+                <button class="nav-btn active" data-tab="json">JSON Parser</button>
+                <button class="nav-btn" data-tab="crypto">Crypto (MD5)</button>
+                <button class="nav-btn" data-tab="converter">Base Converter</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- JSON Parser Section -->
+            <section id="json" class="tab-content active">
+                <div class="tool-header">
+                    <h2>JSON Parser</h2>
+                    <div class="actions">
+                        <button id="json-format">Format</button>
+                        <button id="json-minify">Minify</button>
+                        <button id="json-clear">Clear</button>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                    <div id="json-error" class="error-msg"></div>
+                </div>
+            </section>
+
+            <!-- Crypto Section -->
+            <section id="crypto" class="tab-content">
+                <div class="tool-header">
+                    <h2>Crypto Converter</h2>
+                </div>
+                <div class="input-group">
+                    <label for="crypto-input">Plain Text</label>
+                    <textarea id="crypto-input" placeholder="Enter text to hash..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="crypto-output">MD5 Hash</label>
+                    <div class="copy-wrapper">
+                        <input type="text" id="crypto-output" readonly />
+                        <button class="copy-btn" data-target="crypto-output">Copy</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Base Converter Section -->
+            <section id="converter" class="tab-content">
+                <div class="tool-header">
+                    <h2>Base Converter</h2>
+                </div>
+                <div class="converter-grid">
+                    <div class="input-group">
+                        <label>Decimal (10)</label>
+                        <input type="text" id="base-10" placeholder="123" />
+                    </div>
+                    <div class="input-group">
+                        <label>Hexadecimal (16)</label>
+                        <input type="text" id="base-16" placeholder="7b" />
+                    </div>
+                    <div class="input-group">
+                        <label>Binary (2)</label>
+                        <input type="text" id="base-2" placeholder="1111011" />
+                    </div>
+                    <div class="input-group">
+                        <label>Octal (8)</label>
+                        <input type="text" id="base-8" placeholder="173" />
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 DevToolBox | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
