@@ -1,4 +1,7 @@
 import CryptoJS from 'crypto-js';
+import { inject } from '@vercel/analytics';
+
+inject();
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Shared functionality (Copy to clipboard)
