@@ -333,7 +333,6 @@ button:hover {
 
 .crypto-col textarea {
     min-height: 150px;
-    margin-bottom: 1.5rem;
 }
 
 .divider {
@@ -344,11 +343,24 @@ button:hover {
 
 .copy-wrapper {
     display: flex;
-    gap: 0.5rem;
+    align-items: stretch;
+    margin-bottom: 1.5rem;
+}
+
+.copy-wrapper textarea {
+    margin-bottom: 0;
+    resize: none;
+    border-radius: 0.75rem 0 0 0.75rem;
+    border-right: none;
 }
 
 .copy-btn {
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0.75rem 0.75rem 0;
+    padding: 0 1.5rem;
 }
 
 /* Converter grid */
