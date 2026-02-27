@@ -172,17 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Crypto Logic
+    // 3. Crypto Encoder Logic
     const cryptoInputEncrypt = document.getElementById('crypto-input-encrypt');
     if (cryptoInputEncrypt) {
         const cryptoKeyEncrypt = document.getElementById('crypto-key-encrypt');
-        const cryptoInputDecrypt = document.getElementById('crypto-input-decrypt');
-        const cryptoSelectDecrypt = document.getElementById('crypto-select-decrypt');
-        const cryptoKeyDecryptWrapper = document.getElementById('crypto-key-decrypt-wrapper');
-        const cryptoKeyDecrypt = document.getElementById('crypto-key-decrypt');
-        const cryptoOutputDecrypt = document.getElementById('crypto-output-decrypt');
-        const cryptoDecryptError = document.getElementById('crypto-decrypt-error');
-
         const encryptOutputs = {
             aes: document.getElementById('crypto-aes-enc'),
             md5: document.getElementById('crypto-md5'),
@@ -211,8 +204,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     encryptOutputs.aes.value = '(Secret Key Required)';
                 }
-            } catch (e) { console.error('Encrypt error', e); }
+            } catch (e) {
+                console.error('Encrypt error', e);
+            }
         };
+
+        cryptoInputEncrypt.addEventListener('input', runEncrypt);
+        cryptoKeyEncrypt.addEventListener('input', runEncrypt);
+    }
+
+    // 4. Crypto Decoder Logic
+    const cryptoInputDecrypt = document.getElementById('crypto-input-decrypt');
+    if (cryptoInputDecrypt) {
+        const cryptoSelectDecrypt = document.getElementById('crypto-select-decrypt');
+        const cryptoKeyDecryptWrapper = document.getElementById('crypto-key-decrypt-wrapper');
+        const cryptoKeyDecrypt = document.getElementById('crypto-key-decrypt');
+        const cryptoOutputDecrypt = document.getElementById('crypto-output-decrypt');
+        const cryptoDecryptError = document.getElementById('crypto-decrypt-error');
 
         const runDecrypt = () => {
             const val = cryptoInputDecrypt.value.trim();
@@ -258,12 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        cryptoInputEncrypt.addEventListener('input', runEncrypt);
-        cryptoKeyEncrypt.addEventListener('input', runEncrypt);
         cryptoInputDecrypt.addEventListener('input', runDecrypt);
         cryptoKeyDecrypt.addEventListener('input', runDecrypt);
         cryptoSelectDecrypt.addEventListener('change', () => {
-            cryptoKeyDecryptWrapper.style.display = cryptoSelectDecrypt.value === 'aes' ? 'block' : 'none';
+            if (cryptoKeyDecryptWrapper) {
+                cryptoKeyDecryptWrapper.style.display = cryptoSelectDecrypt.value === 'aes' ? 'block' : 'none';
+            }
             runDecrypt();
         });
     }

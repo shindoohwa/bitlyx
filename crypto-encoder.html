@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Encoder & Hash Generator - bitlyx</title>
+    <meta name="description"
+        content="Generate MD5, SHA-256, SHA-512 hashes. Encrypt data using AES and encode to Base64 fast and securely.">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href="https://bitlyx.vercel.app/crypto-encoder.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bitlyx.vercel.app/crypto-encoder.html" />
+    <meta property="og:title" content="Crypto Encoder & Hash Generator - bitlyx" />
+    <meta property="og:description"
+        content="Generate MD5, SHA-256, SHA-512 hashes. Encrypt data using AES and encode to Base64 fast and securely." />
+    <meta property="og:image" content="https://bitlyx.vercel.app/favicon.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bitlyx.vercel.app/crypto-encoder.html" />
+    <meta property="twitter:title" content="Crypto Encoder & Hash Generator - bitlyx" />
+    <meta property="twitter:description"
+        content="Generate MD5, SHA-256, SHA-512 hashes. Encrypt data using AES and encode to Base64 fast and securely." />
+    <meta property="twitter:image" content="https://bitlyx.vercel.app/favicon.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Crypto Encoder & Hash Generator",
+      "operatingSystem": "All",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Generate hashes and encrypt data online.",
+      "url": "https://bitlyx.vercel.app/crypto-encoder.html"
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="/">bitlyx</a></div>
+            <nav id="main-nav">
+                <a href="/json-parser.html" class="nav-link">JSON Parser</a>
+                <a href="/crypto-encoder.html" class="nav-link active">Encoder</a>
+                <a href="/crypto-decoder.html" class="nav-link">Decoder</a>
+                <a href="/base-converter.html" class="nav-link">Base Converter</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="crypto-encoder" class="page-content">
+                <div class="tool-header">
+                    <h1>Crypto Encoder & Hasher</h1>
+                </div>
+
+                <div class="crypto-col single-col">
+                    <div class="input-group">
+                        <label>Plain Text to Encrypt/Hash</label>
+                        <textarea id="crypto-input-encrypt" placeholder="Enter plain text..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Secret Key (for AES)</label>
+                        <input type="text" id="crypto-key-encrypt" placeholder="Enter secret key..." />
+                    </div>
+                    <div class="crypto-results-grid">
+                        <div class="input-group">
+                            <label>AES Encrypt</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="crypto-aes-enc" readonly />
+                                <button class="copy-btn" data-target="crypto-aes-enc">Copy</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>MD5</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="crypto-md5" readonly />
+                                <button class="copy-btn" data-target="crypto-md5">Copy</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>SHA-256</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="crypto-sha256" readonly />
+                                <button class="copy-btn" data-target="crypto-sha256">Copy</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>SHA-512</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="crypto-sha512" readonly />
+                                <button class="copy-btn" data-target="crypto-sha512">Copy</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>SHA-1</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="crypto-sha1" readonly />
+                                <button class="copy-btn" data-target="crypto-sha1">Copy</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Base64 Encode</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="crypto-b64-enc" readonly />
+                                <button class="copy-btn" data-target="crypto-b64-enc">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 bitlyx | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

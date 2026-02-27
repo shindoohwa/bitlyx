@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Decoder & Decryptor - bitlyx</title>
+    <meta name="description"
+        content="Decrypt AES encrypted data or decode Base64, Hex, and URL encoded strings online.">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href="https://bitlyx.vercel.app/crypto-decoder.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bitlyx.vercel.app/crypto-decoder.html" />
+    <meta property="og:title" content="Crypto Decoder & Decryptor - bitlyx" />
+    <meta property="og:description"
+        content="Decrypt AES encrypted data or decode Base64, Hex, and URL encoded strings online." />
+    <meta property="og:image" content="https://bitlyx.vercel.app/favicon.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bitlyx.vercel.app/crypto-decoder.html" />
+    <meta property="twitter:title" content="Crypto Decoder & Decryptor - bitlyx" />
+    <meta property="twitter:description"
+        content="Decrypt AES encrypted data or decode Base64, Hex, and URL encoded strings online." />
+    <meta property="twitter:image" content="https://bitlyx.vercel.app/favicon.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Crypto Decoder & Decryptor",
+      "operatingSystem": "All",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Decrypt and decode data online.",
+      "url": "https://bitlyx.vercel.app/crypto-decoder.html"
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="/">bitlyx</a></div>
+            <nav id="main-nav">
+                <a href="/json-parser.html" class="nav-link">JSON Parser</a>
+                <a href="/crypto-encoder.html" class="nav-link">Encoder</a>
+                <a href="/crypto-decoder.html" class="nav-link active">Decoder</a>
+                <a href="/base-converter.html" class="nav-link">Base Converter</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="crypto-decoder" class="page-content">
+                <div class="tool-header">
+                    <h1>Crypto Decoder & Decryptor</h1>
+                </div>
+
+                <div class="crypto-col single-col">
+                    <div class="input-group">
+                        <label>Data to Decrypt/Decode</label>
+                        <textarea id="crypto-input-decrypt" placeholder="Enter encoded or encrypted text..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Algorithm</label>
+                        <select id="crypto-select-decrypt" class="custom-select">
+                            <option value="base64">Base64 Decode</option>
+                            <option value="hex">Hex (16진수) Decode</option>
+                            <option value="url">URL Decode</option>
+                            <option value="aes">AES Decrypt</option>
+                        </select>
+                    </div>
+                    <div id="crypto-key-decrypt-wrapper" class="input-group" style="display: none;">
+                        <label>Secret Key (for AES)</label>
+                        <input type="text" id="crypto-key-decrypt" placeholder="Enter secret key..." />
+                    </div>
+                    <div class="input-group">
+                        <label>Result</label>
+                        <div class="copy-wrapper">
+                            <textarea id="crypto-output-decrypt" readonly style="min-height: 200px;"></textarea>
+                            <button class="copy-btn" data-target="crypto-output-decrypt">Copy</button>
+                        </div>
+                    </div>
+                    <div id="crypto-decrypt-error" class="error-msg"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 bitlyx | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

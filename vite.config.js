@@ -7,7 +7,8 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 json: resolve(__dirname, 'json-parser.html'),
-                crypto: resolve(__dirname, 'crypto-converter.html'),
+                encoder: resolve(__dirname, 'crypto-encoder.html'),
+                decoder: resolve(__dirname, 'crypto-decoder.html'),
                 converter: resolve(__dirname, 'base-converter.html'),
             },
         },
