@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unix Timestamp Converter & Timezone Detector - bitlyx</title>
+    <meta name="description"
+        content="Convert Unix Timestamp to human-readable date and vice versa. Support for UTC and local time with automatic timezone detection.">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href="https://bitlyx.vercel.app/unix-timestamp.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bitlyx.vercel.app/unix-timestamp.html" />
+    <meta property="og:title" content="Unix Timestamp Converter & Timezone Detector - bitlyx" />
+    <meta property="og:description"
+        content="Convert Unix Timestamp to human-readable date and vice versa. Support for UTC and local time with automatic timezone detection." />
+    <meta property="og:image" content="https://bitlyx.vercel.app/favicon.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bitlyx.vercel.app/unix-timestamp.html" />
+    <meta property="twitter:title" content="Unix Timestamp Converter & Timezone Detector - bitlyx" />
+    <meta property="twitter:description"
+        content="Convert Unix Timestamp to human-readable date and vice versa. Support for UTC and local time with automatic timezone detection." />
+    <meta property="twitter:image" content="https://bitlyx.vercel.app/favicon.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Unix Timestamp Converter",
+      "operatingSystem": "All",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Convert Unix Timestamps to readable dates online.",
+      "url": "https://bitlyx.vercel.app/unix-timestamp.html"
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="/">bitlyx</a></div>
+            <nav id="main-nav">
+                <a href="/json-parser.html" class="nav-link">JSON Parser</a>
+                <a href="/crypto-encoder.html" class="nav-link">Encoder</a>
+                <a href="/crypto-decoder.html" class="nav-link">Decoder</a>
+                <a href="/unix-timestamp.html" class="nav-link active">Timestamp</a>
+                <a href="/base-converter.html" class="nav-link">Base Converter</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="unix-timestamp" class="page-content">
+                <div class="tool-header">
+                    <h1>Unix Timestamp Converter</h1>
+                    <div class="actions">
+                        <button id="btn-current-unix">Current Time</button>
+                    </div>
+                </div>
+
+                <div class="timestamp-container single-col">
+                    <div class="input-group">
+                        <label>Unix Timestamp (Seconds)</label>
+                        <div class="copy-wrapper">
+                            <input type="text" id="unix-input" placeholder="e.g., 1740716579" />
+                            <button class="copy-btn" data-target="unix-input">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="time-results-grid">
+                        <div class="time-card">
+                            <div class="time-label">UTC Time (Standard)</div>
+                            <div class="time-value" id="utc-time">-</div>
+                        </div>
+
+                        <div class="time-card highlighted">
+                            <div class="time-label">Local Time (<span id="local-tz-name">Detecting...</span>)</div>
+                            <div class="time-value" id="local-time">-</div>
+                            <div class="time-sub-label" id="local-country-info">Analyzing location...</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="reverse-converter">
+                        <h3>Date to Timestamp</h3>
+                        <div class="date-input-grid">
+                            <div class="input-group">
+                                <label>Year</label>
+                                <input type="text" id="date-year" placeholder="YYYY" />
+                            </div>
+                            <div class="input-group">
+                                <label>Month</label>
+                                <input type="text" id="date-month" placeholder="MM" />
+                            </div>
+                            <div class="input-group">
+                                <label>Day</label>
+                                <input type="text" id="date-day" placeholder="DD" />
+                            </div>
+                            <div class="input-group">
+                                <label>Hours</label>
+                                <input type="text" id="date-hour" placeholder="HH" />
+                            </div>
+                            <div class="input-group">
+                                <label>Minutes</label>
+                                <input type="text" id="date-minute" placeholder="mm" />
+                            </div>
+                            <div class="input-group">
+                                <label>Seconds</label>
+                                <input type="text" id="date-second" placeholder="ss" />
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Result Timestamp</label>
+                            <div class="copy-wrapper">
+                                <input type="text" id="date-to-unix-result" readonly />
+                                <button class="copy-btn" data-target="date-to-unix-result">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 bitlyx | Simple Development Tools</p>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

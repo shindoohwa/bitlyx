@@ -24,6 +24,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+    <url>
+        <loc>https://bitlyx.vercel.app/unix-timestamp.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
   <url>
     <loc>https://bitlyx.vercel.app/base-converter.html</loc>
     <lastmod>2026-02-27</lastmod>

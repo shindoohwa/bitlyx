@@ -1,4 +1,3 @@
-import CryptoJS from 'crypto-js';
 import { inject } from '@vercel/analytics';
 
 inject();
@@ -276,7 +275,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Base Converter Logic
+    // 5. Unix Timestamp Converter Logic
+    const unixInput = document.getElementById('unix-input');
+    if (unixInput) {
+        const utcTimeDisp = document.getElementById('utc-time');
+        const localTimeDisp = document.getElementById('local-time');
+        const localTzName = document.getElementById('local-tz-name');
+        const localCountryInfo = document.getElementById('local-country-info');
+        const btnCurrentUnix = document.getElementById('btn-current-unix');
+
+        // Date to Unix inputs
+        const yearIn = document.getElementById('date-year');
+        const monthIn = document.getElementById('date-month');
+        const dayIn = document.getElementById('date-day');
+        const hourIn = document.getElementById('date-hour');
+        const minuteIn = document.getElementById('date-minute');
+        const secondIn = document.getElementById('date-second');
+        const dateToUnixResult = document.getElementById('date-to-unix-result');
+
+        // Detect Timezone
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const locale = navigator.language;
+        localTzName.textContent = tz;
+
+        try {
+            const regionNames = new Intl.DisplayNames([locale], { type: 'region' });
+            const countryCode = locale.split('-')[1] || locale.toUpperCase();
+            const countryName = regionNames.of(countryCode);
+            localCountryInfo.textContent = `Based on your locale: ${countryName} (${locale})`;
+        } catch (e) {
+            localCountryInfo.textContent = `Detected Timezone: ${tz}`;
+        }
+
+        const updateFromUnix = (value) => {
+            if (!value) {
+                utcTimeDisp.textContent = '-';
+                localTimeDisp.textContent = '-';
+                return;
+            }
+            const timestamp = parseInt(value);
+            if (isNaN(timestamp)) return;
+            const date = new Date(timestamp > 10000000000 ? timestamp : timestamp * 1000);
+            if (isNaN(date.getTime())) {
+                utcTimeDisp.textContent = 'Invalid Date';
+                localTimeDisp.textContent = 'Invalid Date';
+                return;
+            }
+            utcTimeDisp.textContent = date.toUTCString();
+            localTimeDisp.textContent = date.toLocaleString(locale, {
+                timeZone: tz,
+                dateStyle: 'full',
+                timeStyle: 'long'
+            });
+        };
+
+        const updateFromDateInputs = () => {
+            const y = parseInt(yearIn.value);
+            const m = parseInt(monthIn.value) - 1;
+            const d = parseInt(dayIn.value);
+            const h = parseInt(hourIn.value) || 0;
+            const min = parseInt(minuteIn.value) || 0;
+            const s = parseInt(secondIn.value) || 0;
+
+            if (isNaN(y) || isNaN(m) || isNaN(d)) {
+                dateToUnixResult.value = '';
+                return;
+            }
+            const date = new Date(y, m, d, h, min, s);
+            dateToUnixResult.value = Math.floor(date.getTime() / 1000);
+        };
+
+        unixInput.addEventListener('input', (e) => updateFromUnix(e.target.value));
+        btnCurrentUnix.addEventListener('click', () => {
+            const now = Math.floor(Date.now() / 1000);
+            unixInput.value = now;
+            updateFromUnix(now);
+        });
+
+        [yearIn, monthIn, dayIn, hourIn, minuteIn, secondIn].forEach(el => {
+            if (el) el.addEventListener('input', updateFromDateInputs);
+        });
+
+        const initialNow = Math.floor(Date.now() / 1000);
+        unixInput.value = initialNow;
+        updateFromUnix(initialNow);
+
+        const nowObj = new Date();
+        if (yearIn) yearIn.value = nowObj.getFullYear();
+        if (monthIn) monthIn.value = nowObj.getMonth() + 1;
+        if (dayIn) dayIn.value = nowObj.getDate();
+        if (hourIn) hourIn.value = nowObj.getHours();
+        if (minuteIn) minuteIn.value = nowObj.getMinutes();
+        if (secondIn) secondIn.value = nowObj.getSeconds();
+        updateFromDateInputs();
+    }
+
+    // 6. Base Converter Logic
     const base10Input = document.getElementById('base-10');
     if (base10Input) {
         const baseInputs = {
@@ -287,22 +381,24 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         Object.entries(baseInputs).forEach(([base, input]) => {
-            input.addEventListener('input', (e) => {
-                const val = e.target.value.trim();
-                if (!val) {
-                    Object.values(baseInputs).forEach(inp => { if (inp !== input) inp.value = ''; });
-                    return;
-                }
-                try {
-                    const decimalValue = parseInt(val, parseInt(base));
-                    if (isNaN(decimalValue)) return;
-                    Object.entries(baseInputs).forEach(([targetBase, targetInput]) => {
-                        if (targetBase !== base) {
-                            targetInput.value = decimalValue.toString(parseInt(targetBase));
-                        }
-                    });
-                } catch (err) { console.error('Conversion error', err); }
-            });
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    const val = e.target.value.trim();
+                    if (!val) {
+                        Object.values(baseInputs).forEach(inp => { if (inp && inp !== input) inp.value = ''; });
+                        return;
+                    }
+                    try {
+                        const decimalValue = parseInt(val, parseInt(base));
+                        if (isNaN(decimalValue)) return;
+                        Object.entries(baseInputs).forEach(([targetBase, targetInput]) => {
+                            if (targetInput && targetBase !== base) {
+                                targetInput.value = decimalValue.toString(parseInt(targetBase));
+                            }
+                        });
+                    } catch (err) { console.error('Conversion error', err); }
+                });
+            }
         });
     }
 });
