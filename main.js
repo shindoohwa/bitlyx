@@ -285,12 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnCurrentUnix = document.getElementById('btn-current-unix');
 
         // Date to Unix inputs
-        const yearIn = document.getElementById('date-year');
-        const monthIn = document.getElementById('date-month');
-        const dayIn = document.getElementById('date-day');
-        const hourIn = document.getElementById('date-hour');
-        const minuteIn = document.getElementById('date-minute');
-        const secondIn = document.getElementById('date-second');
+        const datePicker = document.getElementById('date-input-picker');
         const dateToUnixResult = document.getElementById('date-to-unix-result');
 
         // Detect Timezone
@@ -327,21 +322,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 dateStyle: 'full',
                 timeStyle: 'long'
             });
+
+            // Update date picker to match (in local time)
+            if (datePicker) {
+                const offset = date.getTimezoneOffset() * 60000;
+                const localISODate = new Date(date.getTime() - offset).toISOString().slice(0, 19);
+                datePicker.value = localISODate;
+            }
         };
 
-        const updateFromDateInputs = () => {
-            const y = parseInt(yearIn.value);
-            const m = parseInt(monthIn.value) - 1;
-            const d = parseInt(dayIn.value);
-            const h = parseInt(hourIn.value) || 0;
-            const min = parseInt(minuteIn.value) || 0;
-            const s = parseInt(secondIn.value) || 0;
-
-            if (isNaN(y) || isNaN(m) || isNaN(d)) {
+        const updateFromPicker = () => {
+            if (!datePicker.value) {
                 dateToUnixResult.value = '';
                 return;
             }
-            const date = new Date(y, m, d, h, min, s);
+            const date = new Date(datePicker.value);
+            if (isNaN(date.getTime())) {
+                dateToUnixResult.value = 'Invalid Date';
+                return;
+            }
             dateToUnixResult.value = Math.floor(date.getTime() / 1000);
         };
 
@@ -352,22 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
             updateFromUnix(now);
         });
 
-        [yearIn, monthIn, dayIn, hourIn, minuteIn, secondIn].forEach(el => {
-            if (el) el.addEventListener('input', updateFromDateInputs);
-        });
+        if (datePicker) {
+            datePicker.addEventListener('input', updateFromPicker);
+        }
 
         const initialNow = Math.floor(Date.now() / 1000);
         unixInput.value = initialNow;
         updateFromUnix(initialNow);
-
-        const nowObj = new Date();
-        if (yearIn) yearIn.value = nowObj.getFullYear();
-        if (monthIn) monthIn.value = nowObj.getMonth() + 1;
-        if (dayIn) dayIn.value = nowObj.getDate();
-        if (hourIn) hourIn.value = nowObj.getHours();
-        if (minuteIn) minuteIn.value = nowObj.getMinutes();
-        if (secondIn) secondIn.value = nowObj.getSeconds();
-        updateFromDateInputs();
+        updateFromPicker();
     }
 
     // 6. Base Converter Logic
