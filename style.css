@@ -645,3 +645,118 @@ footer {
         gap: 0.5rem;
     }
 }
+
+/* QR Generator Specific */
+.qr-container.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 1rem;
+}
+
+.qr-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.qr-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.qr-preview-section {
+    position: sticky;
+    top: 2rem;
+}
+
+.qr-preview-card {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#qr-preview-canvas-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    min-height: 200px;
+    width: 100%;
+}
+
+#qr-preview-canvas-container canvas {
+    max-width: 100%;
+    height: auto !important;
+}
+
+.qr-placeholder {
+    color: #64748b;
+    font-size: 0.9rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.color-picker-wrapper {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.color-picker-wrapper input[type="color"] {
+    width: 150%;
+    height: 150%;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    transform: scale(1.5);
+}
+
+.primary-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+}
+
+.primary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+    .qr-container.split-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .qr-preview-section {
+        position: static;
+        order: -1;
+    }
+}

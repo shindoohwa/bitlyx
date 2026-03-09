@@ -1,4 +1,5 @@
 import { inject } from '@vercel/analytics';
+import QRCode from 'qrcode';
 
 inject();
 
@@ -389,6 +390,62 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
                     } catch (err) { console.error('Conversion error', err); }
                 });
+            }
+        });
+    }
+
+    // 7. QR Generator Logic
+    const qrText = document.getElementById('qr-text');
+    if (qrText) {
+        const qrSize = document.getElementById('qr-size');
+        const qrColorDark = document.getElementById('qr-color-dark');
+        const qrColorLight = document.getElementById('qr-color-light');
+        const qrMargin = document.getElementById('qr-margin');
+        const qrCanvasContainer = document.getElementById('qr-preview-canvas-container');
+        const btnDownloadQr = document.getElementById('btn-download-qr');
+
+        const generateQR = async () => {
+            const text = qrText.value.trim();
+            if (!text) {
+                qrCanvasContainer.innerHTML = '<div id="qr-placeholder" class="qr-placeholder"><span>Enter content to preview</span></div>';
+                btnDownloadQr.disabled = true;
+                return;
+            }
+
+            const canvas = document.createElement('canvas');
+            try {
+                await QRCode.toCanvas(canvas, text, {
+                    width: parseInt(qrSize.value),
+                    margin: parseInt(qrMargin.value),
+                    color: {
+                        dark: qrColorDark.value,
+                        light: qrColorLight.value
+                    },
+                    errorCorrectionLevel: 'H'
+                });
+                qrCanvasContainer.innerHTML = '';
+                qrCanvasContainer.appendChild(canvas);
+                btnDownloadQr.disabled = false;
+            } catch (err) {
+                console.error(err);
+                qrCanvasContainer.innerHTML = '<div class="error-msg">Error generating QR code</div>';
+                btnDownloadQr.disabled = true;
+            }
+        };
+
+        qrText.addEventListener('input', generateQR);
+        qrSize.addEventListener('change', generateQR);
+        qrColorDark.addEventListener('input', generateQR);
+        qrColorLight.addEventListener('input', generateQR);
+        qrMargin.addEventListener('input', generateQR);
+
+        btnDownloadQr.addEventListener('click', () => {
+            const canvas = qrCanvasContainer.querySelector('canvas');
+            if (canvas) {
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
             }
         });
     }
