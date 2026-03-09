@@ -11,6 +11,7 @@ export default defineConfig({
                 decoder: resolve(__dirname, 'crypto-decoder.html'),
                 unix: resolve(__dirname, 'unix-timestamp.html'),
                 base: resolve(__dirname, 'base-converter.html'),
+                qr: resolve(__dirname, 'qr-generator.html'),
             },
         },
     },
